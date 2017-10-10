@@ -1,19 +1,30 @@
 import { connect } from 'react-redux';
-import { previewItem } from '../actions/list_actions';
-import ProductsView from '../components/list_products_view';
+import { deleteItem } from '../actions/list_actions';
+import ListView from '../components/list_products_view';
 
+/*
+ This is a redux specific function.
+ What is does is: It gets the state specified in here from the global redux state.
+ For example, here we are retrieving the list of items from the redux store.
+ Whenever this list changes, any component that is using this list of item will re-render.
+ */
 const mapStateToProps = state => ({
-  item: state.list.items,
+  listItems: state.list.items.concat(state.list.recentlyAdded),
 });
 
+/*
+ This is a redux specific function.
+ http://redux.js.org/docs/api/bindActionCreators.html
+ */
 const mapDispatchToProps = dispatch => ({
-  previewItem: (name) => {
-    dispatch(previewItem(name));
+  deleteItem: (name) => {
+    dispatch(deleteItem(name));
   },
 });
+
 
 /*
  Here we are creating a Higher order component
  https://facebook.github.io/react/docs/higher-order-components.html
  */
-export default connect(mapStateToProps, mapDispatchToProps)(ProductsView);
+export default connect(mapStateToProps, mapDispatchToProps)(ListView);

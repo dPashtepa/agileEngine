@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { previewItem } from '../actions/list_actions';
+import { addItem } from '../actions/list_actions';
 import Form from '../components/form';
 
 const mapStateToProps = state => ({
@@ -7,8 +7,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  previewItem: (name) => {
-    dispatch(previewItem(name));
+  addItem: (item) => {
+    dispatch(addItem(item));
   },
 });
 

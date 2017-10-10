@@ -1,13 +1,8 @@
 import { LIST_ACTIONS } from '../consts/action_types';
 
-export const previewItem = name => ({
-  type: LIST_ACTIONS.ITEM_PREVIEW,
+export const deleteItem = name => ({
+  type: LIST_ACTIONS.ITEM_DELETE,
   name, // shorthand for name: name
-});
-
-export const viewItem = name => ({
-  type: LIST_ACTIONS.ITEM_VIEW,
-  name,
 });
 
 export const addItem = item => ({
@@ -15,6 +10,3 @@ export const addItem = item => ({
   item, // shorthand for item: item
 });
 
-export const clearItem = () => ({
-  type: LIST_ACTIONS.ITEM_CLEAR,
-});

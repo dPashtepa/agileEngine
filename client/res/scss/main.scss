@@ -1,5 +1,5 @@
 @import './home.scss';
-@import './view_item.scss';
+@import './view_items.scss';
 
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,600|Roboto:100,300');
 
@@ -40,4 +40,16 @@ div, p, span {
     text-align: center;
   }
   border-bottom: 2px solid gray;
+}
+
+.menu{
+  display: flex;
+  align-items: end;
+  li{
+    list-style-type: none;
+    a{
+      margin-right: 30px;
+      text-decoration: none;
+    }
+  }
 }

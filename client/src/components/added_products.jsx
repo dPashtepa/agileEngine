@@ -1,33 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
-const ListItemPreview = ({ item }) => {
-  if (!item) {
-    return (
-      <div className="preview">
-        <h3>Select an item</h3>
-        <p>Description will appear here</p>
-      </div>
-    );
-  }
-  return (
-    <div className="preview">
-      <h2> { item.name } </h2>
-      <p>{ item.description }</p>
-      <Link to={`view/${item.name}`}>
-        <button type="button" className="btn btn-primary">Read More</button>
-      </Link>
-    </div>
-  );
+class AddedProducts extends Component {
+    renderList() {
+        const { listItems} = this.props;
+        if(listItems.length) {
+            return Object.keys(listItems).map((key) => {
+                const item = listItems[key];
+                return (
+                    <div
+                        key={item.name}
+                    >
+                        <h2>{ item.name }</h2>
+                        <p>{ item.color }</p>
+                    </div>
+                );
+            });
+        } else {
+            return (
+                <div>No recently added products</div>
+            )
+        }
+
+    }
+    render() {
+        console.log(this.prop);
+        return (
+            <div>
+                <h4>Recently added products</h4>
+                <div className="list_items">
+                    { this.renderList() }
+                </div>
+            </div>
+        )
+    }
+
+}
+
+AddedProducts.propTypes = {
+    listItems: PropTypes.array.isRequired,
 };
 
-ListItemPreview.propTypes = {
-  item: PropTypes.object,
-};
-
-ListItemPreview.defaultProps = {
-  item: null,
-};
-
-export default ListItemPreview;
+export default AddedProducts;

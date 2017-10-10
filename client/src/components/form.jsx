@@ -1,34 +1,32 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 class ListView extends Component {
-  renderList() {
-    const { listItems, previewItem } = this.props;
-    return Object.keys(listItems).map((key) => {
-      const item = listItems[key];
-      return (
-        <li
-          key={item.name}
-        >
-          <button onClick={() => previewItem(item.name)}>{ item.name }</button>
-        </li>
-      );
-    });
+  constructor(props) {
+    super(props);
+    this.newItem = this.newItem.bind(this);
   }
+
+  newItem () {
+    const { addItem } = this.props;
+    const newItem = {};
+    for (const field in this.refs) {
+      newItem[field] = this.refs[field].value;
+    }
+    addItem(newItem);
+
+  }
+
   render() {
+
     return (
       <div className="list_items">
-        <ul>
-          { this.renderList() }
-        </ul>
+        <h2>Fill the fields to add new item</h2>
+        <input type="text" name="name" placeholder="Name" ref="name"/>
+        <input type="text" name="color" placeholder="color" ref="color"/>
+        <button onClick={() =>this.newItem()}>Add</button>
       </div>
     );
   }
 }
-
-ListView.propTypes = {
-  listItems: PropTypes.object.isRequired,
-  previewItem: PropTypes.func.isRequired,
-};
 
 export default ListView;

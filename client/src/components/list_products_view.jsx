@@ -1,34 +1,40 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
-class ListItemView extends Component {
-  componentDidMount() {
-    const { viewItem, match } = this.props;
-    // viewItem(match.params.name);
-  }
-  render() {
-    console.log(this.prop);
-    const { item } = this.props;
-    if (!item) {
-      return (<div>Loading...</div>);
+class ListView extends Component {
+  renderList() {
+    const { listItems, deleteItem } = this.props;
+    if(listItems.length) {
+      return Object.keys(listItems).map((key) => {
+        const item = listItems[key];
+        return (
+            <div
+                key={item.name}
+            >
+              <h2>{ item.name }</h2>
+              <p>{ item.color }</p>
+              <button onClick={() => deleteItem(item.name)}>Delete</button>
+            </div>
+        );
+      });
+    } else {
+      return (
+          <div>No items</div>
+      )
     }
 
+  }
+  render() {
     return (
-      <div className="view_item">
-        <Link to={'/'}>
-          <button type="button">Back</button>
-        </Link>
-        <h2>{ item.name }</h2>
-        <p>{ item.description }</p>
-      </div>
+        <div className="list_items">
+            { this.renderList() }
+        </div>
     );
   }
 }
 
-// ListItemView.propTypes = {
-//   listItems: PropTypes.object.isRequired,
-//   previewItem: PropTypes.func.isRequired,
-// };
+ListView.propTypes = {
+  listItems: PropTypes.array.isRequired,
+};
 
-export default ListItemView;
+export default ListView;
