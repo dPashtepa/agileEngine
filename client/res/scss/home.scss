@@ -3,3 +3,11 @@
   align-items: center;
   justify-content: space-around;
 }
+
+.add_item{
+  display: flex;
+  flex-direction: column;
+  > * {
+    margin: 10px 0;
+  }
+}

@@ -8,9 +8,8 @@ import AddedProducts from '../components/added_products';
  Whenever this list changes, any component that is using this list of item will re-render.
  */
 const mapStateToProps = state => ({
-  listItems: state.list.recentlyAdded,
+  recentlyAdded: [].concat(state.list.recentlyAdded),
 });
-
 
 
 /*
@@ -18,3 +17,4 @@ const mapStateToProps = state => ({
  https://facebook.github.io/react/docs/higher-order-components.html
  */
 export default connect(mapStateToProps)(AddedProducts);
+

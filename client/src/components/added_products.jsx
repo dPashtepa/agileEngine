@@ -3,16 +3,18 @@ import PropTypes from 'prop-types';
 
 class AddedProducts extends Component {
     renderList() {
-        const { listItems} = this.props;
-        if(listItems.length) {
-            return Object.keys(listItems).map((key) => {
-                const item = listItems[key];
+        const { recentlyAdded } = this.props;
+        if(recentlyAdded.length) {
+            return Object.keys(recentlyAdded).map((key) => {
+                const item = recentlyAdded[key];
+                let colors = item.color.join(', ');
+
                 return (
                     <div
                         key={item.name}
                     >
                         <h2>{ item.name }</h2>
-                        <p>{ item.color }</p>
+                        <p>{ colors }</p>
                     </div>
                 );
             });
@@ -23,8 +25,8 @@ class AddedProducts extends Component {
         }
 
     }
+
     render() {
-        console.log(this.prop);
         return (
             <div>
                 <h4>Recently added products</h4>
@@ -38,7 +40,7 @@ class AddedProducts extends Component {
 }
 
 AddedProducts.propTypes = {
-    listItems: PropTypes.array.isRequired,
+  recentlyAdded: PropTypes.array.isRequired,
 };
 
 export default AddedProducts;

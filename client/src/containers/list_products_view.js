@@ -9,7 +9,7 @@ import ListView from '../components/list_products_view';
  Whenever this list changes, any component that is using this list of item will re-render.
  */
 const mapStateToProps = state => ({
-  listItems: state.list.items.concat(state.list.recentlyAdded),
+  listItems: [].concat(state.list.items),
 });
 
 /*

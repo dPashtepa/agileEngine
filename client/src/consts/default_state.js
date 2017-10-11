@@ -1,14 +1,14 @@
 export const LISTS = { items: [
     {
         name: 'Product One',
-        color: 'blue'
+        color: ['blue', 'red']
     },
     {
         name: 'Product Two',
-        color: 'green'
+        color: ['green']
     },
     {
         name: 'Product Three',
-        color: 'yellow'
+        color: ['red']
     }
 ], recentlyAdded: []};

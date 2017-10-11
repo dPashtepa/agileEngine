@@ -7,12 +7,14 @@ class ListView extends Component {
     if(listItems.length) {
       return Object.keys(listItems).map((key) => {
         const item = listItems[key];
+        let colors = item.color.join(', ');
+
         return (
             <div
                 key={item.name}
             >
               <h2>{ item.name }</h2>
-              <p>{ item.color }</p>
+              <p>{ colors }</p>
               <button onClick={() => deleteItem(item.name)}>Delete</button>
             </div>
         );
