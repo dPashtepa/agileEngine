@@ -7,7 +7,7 @@ class ListView extends Component {
     if(listItems.length) {
       return Object.keys(listItems).map((key) => {
         const item = listItems[key];
-        let colors = item.color.join(', ');
+        let colors = item.color && item.color.length ? item.color.join(', ') : '';
 
         return (
             <div

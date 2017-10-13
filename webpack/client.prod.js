@@ -7,7 +7,7 @@ module.exports = {
   context: path.join(__dirname, '../client'),
   devtool: 'source-map',
   entry: [
-    './src/index.js',
+    './src/index.jsx',
     './res/scss/main.scss',
   ],
   output: {
@@ -17,7 +17,7 @@ module.exports = {
   },
   module: {
     rules: [{
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -43,6 +43,9 @@ module.exports = {
         }]
       },
     ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new webpack.DefinePlugin({

@@ -7,7 +7,7 @@ class AddedProducts extends Component {
         if(recentlyAdded.length) {
             return Object.keys(recentlyAdded).map((key) => {
                 const item = recentlyAdded[key];
-                let colors = item.color.join(', ');
+                let colors = item.color && item.color.length ? item.color.join(', ') : '';
 
                 return (
                     <div
